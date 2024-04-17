@@ -6,6 +6,7 @@ import compression from "compression";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import router from "./router";
 
 const app = express();
 
@@ -39,3 +40,5 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", (error: Error) => {
   console.log("Error connecting to mongo:", error);
 });
+
+app.use("/", router());
